@@ -23,6 +23,7 @@ export default class HandsontableModal extends React.PureComponent {
 
   constructor(props) {
     super(props);
+    this.logger = require('@alias/logger')('growi:PageEditor:HandsontableModal');
 
     /*
      * ## Note ##
@@ -88,9 +89,24 @@ export default class HandsontableModal extends React.PureComponent {
   }
 
   createCustomizedContextMenu() {
+    const self = this;
     return {
       items: {
         row_above: {},
+        row_above_multi: {
+          key: 'row_above_multi',
+          name() {
+            return 'Insert row above multi'; // TODO: rename
+          },
+          hidden() {
+            // hidden when multiple rows and columns is selected
+            return this.getSelectedRange().length > 1;
+          },
+          callback(key, selection) {
+            self.logger.debug(selection);
+            self.logger.debug(this.getSelectedRange());
+          },
+        },
         row_below: {},
         col_left: {},
         col_right: {},
