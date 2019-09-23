@@ -31,6 +31,7 @@ body.on-edit {
 
   // hide unnecessary elements
   .navbar.navbar-static-top,
+  .sidebar,
   .row.row-alerts,
   .row.page-list,
   .row.page-comments-row,
@@ -288,6 +289,15 @@ body.on-edit {
     .btn-view-outdated-draft {
       text-decoration: underline;
       vertical-align: unset;
+    }
+  }
+
+  // editing /Sidebar
+  &.growi-sidebar {
+    .page-editor-preview-body {
+      @extend .center-block;
+      width: 220px;
+      padding-top: 0;
     }
   }
 }

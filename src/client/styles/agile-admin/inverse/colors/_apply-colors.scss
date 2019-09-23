@@ -29,14 +29,14 @@ body {
           &:hover {
             .group1 {
               fill: $growi-green;
-          }
+            }
             .group2 {
               fill: $growi-blue;
+            }
+          }
         }
       }
     }
-  }
-}
   }
 }
 
@@ -100,32 +100,32 @@ body {
   &:hover,
   &:focus {
     background: rgba(0, 0, 0, 0.03);
-    }
-   &.active {
+  }
+  &.active {
     font-weight: 500;
     color: $dark;
     border-left: 3px solid $themecolor;
     i {
       color: $themecolor;
-        }
-        }
+    }
+  }
 }
 
 #side-menu ul > li > a {
   &:hover {
     color: $themecolor;
-    }
+  }
   &.active {
     font-weight: 500;
     color: $dark;
-    }
+  }
 }
 
 .sidebar #side-menu .user-pro {
   .nav-second-level a:hover {
     color: $themecolor;
-        }
   }
+}
 
 /*themecolor*/
 
@@ -351,6 +351,16 @@ body.on-edit {
       border-top-color: $border;
     }
   }
+
+  // editing /Sidebar
+  &.growi-sidebar .main {
+    .page-editor-preview-container {
+      background-color: darken($bodycolor, 2%);
+    }
+    .page-editor-preview-body {
+      @include sidebar-color();
+    }
+  }
 }
 
 /*
@@ -409,7 +419,7 @@ body.on-edit {
 /*
  * GROWI admin page #themeOptions
  */
- .admin-page {
+.admin-page {
   #themeOptions {
     .theme-option-container.active {
       .theme-option-name {

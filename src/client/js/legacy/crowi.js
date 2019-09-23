@@ -479,6 +479,11 @@ $(() => {
     $link.html(path.replace(new RegExp(pattern), `<strong>${shortPath}$1</strong>`));
   });
 
+  // editing /Sidebar
+  if (pagePath === '/Sidebar') {
+    $('body').addClass('growi-sidebar');
+  }
+
   if (pageId) {
     // for Crowi Template LangProcessor
     $('.template-create-button', $('#revision-body')).on('click', function() {
