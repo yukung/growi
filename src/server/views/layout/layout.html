@@ -177,7 +177,15 @@
           {% endif %}
         </li>
 
-        <li class="tbd"><a href="#">(TBD) Create /Sidebar</a></li>
+        {% if customizeService.sidebarContentCache !== null %}
+          {{ customizeService.sidebarContentCache }}
+        {% else %}
+          <li>
+            <a href="/Sidebar#edit-form">
+              <i class="icon-magic-wand"></i> Create <strong> /Sidebar</strong>
+            </a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>

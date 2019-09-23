@@ -21,6 +21,11 @@
     + 25px //   add .btn-open-dropzone height
     + 30px; //  add .navbar-editor height
 
+  // reset margin for #page-wrapper
+  #page-wrapper {
+    margin-left: 0;
+  }
+
   .main {
     width: 100%;
     height: 100vh;

@@ -5,10 +5,13 @@ const logger = require('@alias/logger')('growi:service:CustomizeService'); // es
  */
 class CustomizeService {
 
-  constructor(configManager, appService, xssService) {
-    this.configManager = configManager;
-    this.appService = appService;
-    this.xssService = xssService;
+  constructor(crowi) {
+    this.crowi = crowi;
+    this.configManager = crowi.configManager;
+    this.appService = crowi.appService;
+    this.xssService = crowi.xssService;
+
+    this.sidebarContentCache = null;
   }
 
   /**
@@ -39,6 +42,17 @@ class CustomizeService {
     }
 
     this.customTitleTemplate = configValue;
+  }
+
+  async initSidebar() {
+    const Revision = this.crowi.model('Revision');
+
+    const revision = await Revision.findLatestRevision('/Sidebar');
+
+    if (revision != null) {
+      this.sidebarContentCache = revision.body;
+      // TODO: render sidebar
+    }
   }
 
   generateCustomTitle(page) {

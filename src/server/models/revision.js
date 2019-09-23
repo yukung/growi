@@ -25,6 +25,10 @@ module.exports = function(crowi) {
     hasDiffToPrev: { type: Boolean },
   });
 
+  revisionSchema.statics.findLatestRevision = function(path) {
+    return this.findOne({ path }).sort({ createdAt: -1 });
+  };
+
   /*
    * preparation for https://github.com/weseek/growi/issues/216
    */
