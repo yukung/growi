@@ -1,19 +1,34 @@
 const debug = require('debug')('growi:events:page');
-const util = require('util');
-const events = require('events');
+const { EventEmitter } = require('events');
 
-function PageEvent(crowi) {
-  this.crowi = crowi;
+class PageEvent extends EventEmitter {
 
-  events.EventEmitter.call(this);
+  constructor(crowi) {
+    super();
+
+    this.crowi = crowi;
+  }
+
+  onCreate(page, user) {
+    debug('onCreate event fired');
+
+    if (page.path === '/Sidebar') {
+      this.updateSidebarCache();
+    }
+  }
+
+  onUpdate(page, user) {
+    debug('onUpdate event fired');
+
+    if (page.path === '/Sidebar') {
+      this.updateSidebarCache();
+    }
+  }
+
+  updateSidebarCache() {
+    this.crowi.customizeService.initSidebar();
+  }
+
 }
-util.inherits(PageEvent, events.EventEmitter);
-
-PageEvent.prototype.onCreate = function(page, user) {
-  debug('onCreate event fired');
-};
-PageEvent.prototype.onUpdate = function(page, user) {
-  debug('onUpdate event fired');
-};
 
 module.exports = PageEvent;
