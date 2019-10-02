@@ -1,4 +1,4 @@
-const logger = require('@alias/logger')('growi:GrowiRenderer');
+const logger = require('@alias/logger')('growi:service:GrowiRenderer');
 
 const remark = require('remark');
 
@@ -39,7 +39,9 @@ class GrowiRenderer {
   }
 
   process(markdown) {
-    return this.remark.processSync(markdown).toString();
+    const tree = this.remark.processSync(markdown);
+    logger.info(tree);
+    return tree.toString();
   }
 
 }

@@ -1,3 +1,5 @@
+const logger = require('@alias/logger')('growi:service:remark:GrowiRenderer');
+
 const RemarkConfigurer = require('./remark-configurer');
 
 class Md2HtmlConfigurer extends RemarkConfigurer {
