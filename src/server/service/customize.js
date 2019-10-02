@@ -1,5 +1,8 @@
 const logger = require('@alias/logger')('growi:service:CustomizeService'); // eslint-disable-line no-unused-vars
 
+const GrowiRenderer = require('@commons/service/growi-renderer');
+const BreaksConfigurer = require('@commons/service/remark/breaks');
+
 /**
  * the service class of CustomizeService
  */
@@ -14,15 +17,15 @@ class CustomizeService {
     this.sidebarContentCache = null;
     this.remarkRenderer = null;
 
-    this.initRemark();
+    this.initGrowiRenderer();
   }
 
-  initRemark() {
-    const remark = require('remark');
-    const html = require('remark-html');
-
-    this.remarkRenderer = remark()
-      .use(html, { sanitize: false });
+  initGrowiRenderer() {
+    this.growiRenderer = new GrowiRenderer()
+      .addRemarkConfigurers([
+        new BreaksConfigurer(),
+      ])
+      .setup();
   }
 
   /**
@@ -61,8 +64,7 @@ class CustomizeService {
     const revision = await Revision.findLatestRevision('/Sidebar');
 
     if (revision != null) {
-      this.sidebarContentCache = this.remarkRenderer.processSync(revision.body).toString();
-      // TODO: render sidebar
+      this.sidebarContentCache = this.growiRenderer.process(revision.body).toString();
     }
   }
 

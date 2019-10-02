@@ -10707,6 +10707,11 @@ regjsparser@^0.6.0:
   dependencies:
     jsesc "~0.5.0"
 
+remark-breaks@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/remark-breaks/-/remark-breaks-1.0.3.tgz#9ca5dbf99ad04154bbf0b6e8f227b3735dfe637a"
+  integrity sha512-ip5hvJE8vsUJCGfgHaEJbf/JfO6KTZV+NBG68AWkEMhrjHW3Qh7EorED41mCt0FFSTrUDeRiNHovKO7cqgPZmw==
+
 remark-html@^10.0.0:
   version "10.0.0"
   resolved "https://registry.yarnpkg.com/remark-html/-/remark-html-10.0.0.tgz#927047c16845ec47e2c361e1d7f7c32ab72c63c7"
