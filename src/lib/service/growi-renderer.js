@@ -4,7 +4,7 @@ const remark = require('remark');
 
 
 const REMARK_CONFIGURERS_DEFAULT = [
-  new (require('./remark/html'))(),
+  new (require('./remark/md2html'))(),
 ];
 
 class GrowiRenderer {
