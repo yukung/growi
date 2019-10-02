@@ -178,7 +178,9 @@
         </li>
 
         {% if customizeService.sidebarContentCache !== null %}
-          {{ customizeService.sidebarContentCache }}
+          <li>
+            <div>{% autoescape false %}{{ customizeService.sidebarContentCache }}{% endautoescape %}</div>
+          </li>
         {% else %}
           <li>
             <a href="/Sidebar#edit-form">

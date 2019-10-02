@@ -12,6 +12,17 @@ class CustomizeService {
     this.xssService = crowi.xssService;
 
     this.sidebarContentCache = null;
+    this.remarkRenderer = null;
+
+    this.initRemark();
+  }
+
+  initRemark() {
+    const remark = require('remark');
+    const html = require('remark-html');
+
+    this.remarkRenderer = remark()
+      .use(html, { sanitize: false });
   }
 
   /**
@@ -50,7 +61,7 @@ class CustomizeService {
     const revision = await Revision.findLatestRevision('/Sidebar');
 
     if (revision != null) {
-      this.sidebarContentCache = revision.body;
+      this.sidebarContentCache = this.remarkRenderer.processSync(revision.body).toString();
       // TODO: render sidebar
     }
   }
