@@ -40,7 +40,7 @@ class GrowiRenderer {
 
   process(markdown) {
     const tree = this.remark.processSync(markdown);
-    logger.info(tree);
+    logger.trace(tree);
     return tree.toString();
   }
 
