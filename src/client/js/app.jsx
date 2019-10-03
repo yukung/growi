@@ -33,6 +33,7 @@ import StaffCredit from './components/StaffCredit/StaffCredit';
 import MyDraftList from './components/MyDraftList/MyDraftList';
 import UserPictureList from './components/User/UserPictureList';
 import TableOfContents from './components/TableOfContents';
+import Sidebar from './components/Sidebar';
 
 import CustomCssEditor from './components/Admin/CustomCssEditor';
 import CustomScriptEditor from './components/Admin/CustomScriptEditor';
@@ -145,6 +146,19 @@ Object.keys(componentMappings).forEach((key) => {
     );
   }
 });
+
+// render Sidebar
+const sidebarContainerElem = document.getElementById('sidebar-container');
+if (sidebarContainerElem) {
+  ReactDOM.hydrate(
+    <I18nextProvider i18n={i18n}>
+      <Provider inject={injectableContainers}>
+        <Sidebar innerHTML={sidebarContainerElem.innerHTML} />
+      </Provider>
+    </I18nextProvider>,
+    sidebarContainerElem,
+  );
+}
 
 // render for admin
 const customCssEditorElem = document.getElementById('custom-css-editor');

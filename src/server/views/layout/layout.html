@@ -177,17 +177,13 @@
           {% endif %}
         </li>
 
-        {% if customizeService.sidebarContentCache !== null %}
-          <li>
-            <div>{% autoescape false %}{{ customizeService.sidebarContentCache }}{% endautoescape %}</div>
-          </li>
-        {% else %}
-          <li>
-            <a href="/Sidebar#edit-form">
-              <i class="icon-magic-wand"></i> Create <strong> /Sidebar</strong>
-            </a>
-          </li>
-        {% endif %}
+        <li>
+          <!--
+            !! Do NOT remove nested div !!
+            It will be removed in app.jsx before
+          -->
+          <div id="sidebar-container"><div>{% autoescape false %}{{ customizeService.sidebarContentCache }}{% endautoescape %}</div></div>
+        </li>
       </ul>
     </div>
   </div>
