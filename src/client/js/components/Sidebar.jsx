@@ -75,6 +75,14 @@ class Sidebar extends React.PureComponent {
       );
     }
 
+    if (this.state.html === '') {
+      return (
+        <a href="/Sidebar#edit">
+          <i className="icon-magic-wand"></i> Create <strong> /Sidebar</strong>
+        </a>
+      );
+    }
+
     return (
       <>
         <div key="sidebar" dangerouslySetInnerHTML={{ __html: this.state.html }}></div>
