@@ -102,7 +102,7 @@ class Draft extends React.Component {
     const { t } = this.props;
     return (
       <div className="draft-list-item">
-        <div className="accordion" id="accordionMyDraft">
+        <div className="accordion border-bottom" id="accordionMyDraft">
           <div className="card">
             <div className="card-header d-flex" id="headerMyDraft">
               <button
@@ -160,7 +160,14 @@ class Draft extends React.Component {
                 </a>
               </div>
             </div>
-            <div id="collapseMyDraft" className="collapse show" aria-labelledby="headerMyDraft" data-parent="#accordionMyDraft">
+            <div
+              id="collapseMyDraft"
+              className="collapse"
+              aria-labelledby="headerMyDraft"
+              data-parent="#accordionMyDraft"
+              onEnter={this.expandPanelHandler}
+              onExit={this.collapsePanelHandler}
+            >
               <div className="card-body">
                 {/* loading spinner */}
                 { this.state.isPanelExpanded && !this.state.isRendered && (
