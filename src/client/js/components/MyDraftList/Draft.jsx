@@ -7,7 +7,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 // TODO: GW-333
 // import Panel from 'react-bootstrap/es/Panel';
 import {
-  UncontrolledTooltip,
+  UncontrolledTooltip, Collapse, Button, Card, CardBody, CardHeader,
 } from 'reactstrap';
 
 import { createSubscribedElement } from '../UnstatedUtils';
@@ -34,6 +34,7 @@ class Draft extends React.Component {
     this.collapsePanelHandler = this.collapsePanelHandler.bind(this);
     this.renderHtml = this.renderHtml.bind(this);
     this.renderAccordionTitle = this.renderAccordionTitle.bind(this);
+    this.collapseCardHandler = this.collapseCardHandler.bind(this);
   }
 
   changeToolTipLabel() {
@@ -98,91 +99,95 @@ class Draft extends React.Component {
     );
   }
 
+  collapseCardHandler() {
+    // this.setState({ collapse: false, setCollapse: false, setStatus: 'Closed' });
+  }
+
   render() {
     const { t } = this.props;
+
     return (
       <div className="draft-list-item">
-        <div className="accordion border-bottom" id="accordionMyDraft">
-          <div className="card">
-            <div className="card-header d-flex" id="headerMyDraft">
-              <button
-                className="btn btn-link py-0"
-                type="button"
-                data-toggle="collapse"
-                data-target="#collapseMyDraft"
-                aria-expanded="true"
-                aria-controls="collapseMyDraft"
-              >
-                {this.renderAccordionTitle(this.props.isExist)}
-              </button>
-              <a href={this.props.path}><i className="icon icon-login"></i></a>
-              <div className="flex-grow-1"></div>
-              <div className="icon-container">
-                {this.props.isExist
-                  ? null
-                  : (
-                    <a
-                      href={`${this.props.path}#edit`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-toggle="tooltip"
-                      title={this.props.t('Edit')}
-                    >
-                      <i className="mx-2 icon-note" />
-                    </a>
-                  )
-                }
-                <span id="draft-copied-tooltip">
-                  <CopyToClipboard text={this.props.markdown} onCopy={this.changeToolTipLabel}>
-                    <a
-                      className="text-center draft-copy"
-                    >
-                      <i className="mx-2 ti-clipboard" />
-                    </a>
-                  </CopyToClipboard>
-                </span>
-                <UncontrolledTooltip placement="top" target="draft-copied-tooltip">
-                  { this.state.showCopiedMessage && (
-                    <strong>copied!</strong>
-                  ) }
-                  { !this.state.showCopiedMessage && (
-                    <span>{this.props.t('Copy')}</span>
-                  ) }
-                </UncontrolledTooltip>
-                <a
-                  className="text-danger text-center"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title={t('Delete')}
-                  onClick={() => { return this.props.clearDraft(this.props.path) }}
-                >
-                  <i className="mx-2 icon-trash" />
-                </a>
-              </div>
-            </div>
-            <div
-              id="collapseMyDraft"
-              className="collapse"
-              aria-labelledby="headerMyDraft"
-              data-parent="#accordionMyDraft"
-              onEnter={this.expandPanelHandler}
-              onExit={this.collapsePanelHandler}
+        <Card className="accordion" id="accordionMyDraft">
+          <CardHeader className="d-flex" id="headerMyDraft">
+            <Button
+              className="btn btn-link py-0"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapseMyDraft"
+              aria-expanded="true"
+              aria-controls="collapseMyDraft"
             >
-              <div className="card-body">
-                {/* loading spinner */}
-                { this.state.isPanelExpanded && !this.state.isRendered && (
-                  <div className="text-center">
-                    <i className="fa fa-lg fa-spinner fa-pulse mx-auto text-muted"></i>
-                  </div>
+              {this.renderAccordionTitle(this.props.isExist)}
+            </Button>
+            <a href={this.props.path}><i className="icon icon-login"></i></a>
+            <div className="flex-grow-1"></div>
+            <div className="icon-container">
+              {this.props.isExist
+                ? null
+                : (
+                  <a
+                    href={`${this.props.path}#edit`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-toggle="tooltip"
+                    title={this.props.t('Edit')}
+                  >
+                    <i className="mx-2 icon-note" />
+                  </a>
+                )
+              }
+              <span id="draft-copied-tooltip">
+                <CopyToClipboard text={this.props.markdown} onCopy={this.changeToolTipLabel}>
+                  <a
+                    className="text-center draft-copy"
+                  >
+                    <i className="mx-2 ti-clipboard" />
+                  </a>
+                </CopyToClipboard>
+              </span>
+              <UncontrolledTooltip placement="top" target="draft-copied-tooltip">
+                { this.state.showCopiedMessage && (
+                  <strong>copied!</strong>
                 ) }
-                {/* contents */}
-                { this.state.isPanelExpanded && this.state.isRendered && (
-                  <RevisionBody html={this.state.html} />
+                { !this.state.showCopiedMessage && (
+                  <span>{this.props.t('Copy')}</span>
                 ) }
-              </div>
+              </UncontrolledTooltip>
+              <a
+                className="text-danger text-center"
+                data-toggle="tooltip"
+                data-placement="top"
+                title={t('Delete')}
+                onClick={() => { return this.props.clearDraft(this.props.path) }}
+              >
+                <i className="mx-2 icon-trash" />
+              </a>
             </div>
-          </div>
-        </div>
+          </CardHeader>
+          <Collapse
+            id="collapseMyDraft"
+            className="collapse"
+            aria-labelledby="headerMyDraft"
+            data-parent="#accordionMyDraft"
+            isOpen={this.state.isPanelExpanded}
+            onEntering={this.expandPanelHandler}
+            onExiting={this.collapsePanelHandler}
+          >
+            <CardBody>
+              {/* loading spinner */}
+              { this.state.isPanelExpanded && !this.state.isRendered && (
+                <div className="text-center">
+                  <i className="fa fa-lg fa-spinner fa-pulse mx-auto text-muted"></i>
+                </div>
+              ) }
+              {/* contents */}
+              { this.state.isPanelExpanded && this.state.isRendered && (
+                <RevisionBody html={this.state.html} />
+              ) }
+            </CardBody>
+          </Collapse>
+        </Card>
       </div>
     );
   }
