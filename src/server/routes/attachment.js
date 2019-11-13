@@ -62,17 +62,24 @@ module.exports = function(crowi, app) {
       return res.json(ApiResponse.error(`Forbidden to access to the attachment '${attachment.id}'`));
     }
 
-    let fileStream;
-    try {
-      fileStream = await fileUploader.findDeliveryFile(attachment);
-    }
-    catch (e) {
-      logger.error(e);
-      return res.json(ApiResponse.error(e.message));
-    }
+    const signedUrl = await fileUploader.getSignedUrl(attachment);
 
-    setHeaderToRes(res, attachment, forceDownload);
-    return fileStream.pipe(res);
+    console.log('signedUrl', signedUrl);
+
+    res.redirect(signedUrl);
+
+    // let fileStream;
+    // try {
+    //   fileStream = await fileUploader.findDeliveryFile(attachment);
+    // }
+    // catch (e) {
+    //   logger.error(e);
+    //   return res.json(ApiResponse.error(e.message));
+    // }
+
+    // setHeaderToRes(res, attachment, forceDownload);
+    // return fileStream.pipe(res);
+
   }
 
   /**

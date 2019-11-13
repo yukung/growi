@@ -69,6 +69,28 @@ module.exports = function(crowi) {
     return myBucket.upload(fileStream.path, options);
   };
 
+  lib.getSignedUrl = async function(attachment) {
+    const gcs = getGcsInstance(this.getIsUploadable());
+    const myBucket = gcs.bucket(getGcsBucket());
+    const filePath = getFilePathOnStorage(attachment);
+
+    try {
+      const [url] = await myBucket
+        .file(filePath)
+        .getSignedUrl({
+          version: 'v2',
+          action: 'read',
+          expires: Date.now() + 1000 * 60 * 60, // one hour
+        });
+
+      return url;
+    }
+    catch (err) {
+      logger.error(err);
+      throw new Error(`Coudn't get signed url from GCS for the Attachment (${attachment._id.toString()})`);
+    }
+  };
+
   /**
    * Find data substance
    *
@@ -86,7 +108,7 @@ module.exports = function(crowi) {
     }
     catch (err) {
       logger.error(err);
-      throw new Error(`Coudn't get file from AWS for the Attachment (${attachment._id.toString()})`);
+      throw new Error(`Coudn't get file from GCS for the Attachment (${attachment._id.toString()})`);
     }
 
     // return stream.Readable
