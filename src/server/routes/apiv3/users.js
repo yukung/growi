@@ -119,8 +119,8 @@ module.exports = (crowi) => {
    */
   router.post('/invite', loginRequiredStrictly, adminRequired, csrf, validator.inviteEmail, ApiV3FormValidator, async(req, res) => {
     try {
-      const emailList = await User.createUsersByInvitation(req.body.shapedEmailList, req.body.sendEmail);
-      return res.apiv3({ emailList });
+      const invitedUserList = await User.createUsersByInvitation(req.body.shapedEmailList, req.body.sendEmail);
+      return res.apiv3({ invitedUserList });
     }
     catch (err) {
       logger.error('Error', err);
@@ -350,7 +350,7 @@ module.exports = (crowi) => {
    *                schema:
    *                  properties:
    *                    paginateResult:
-   *                      $ref: '#components/schemas/PaginateResult'
+   *                      $ref: '#/components/schemas/PaginateResult'
    */
   router.get('/external-accounts/', loginRequiredStrictly, adminRequired, async(req, res) => {
     const page = parseInt(req.query.page) || 1;
@@ -392,7 +392,6 @@ module.exports = (crowi) => {
    *                      type: object
    *                      description: A result of `ExtenralAccount.findByIdAndRemove`
    */
-
   router.delete('/external-accounts/:id/remove', loginRequiredStrictly, adminRequired, ApiV3FormValidator, async(req, res) => {
     const { id } = req.params;
 
