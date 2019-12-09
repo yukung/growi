@@ -24,4 +24,4 @@ jobs:
 
     - name: echo
       run: |
-        echo node -v
+        echo `node -v`
