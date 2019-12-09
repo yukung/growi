@@ -23,6 +23,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Use ghaction-dummy
-      uses: yuki-takei/ghaction-dummy:master
+      uses: yuki-takei/ghaction-dummy@master
       with:
         myname: yusuketk
