@@ -23,6 +23,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Use ghaction-dummy
+      id: dummy
       uses: yuki-takei/ghaction-dummy@master
       with:
         myname: yusuketk
+
+    - name: Confirm outputs
+      run: |
+        echo "${{ steps.dummy.outputs.message }}!!!"
