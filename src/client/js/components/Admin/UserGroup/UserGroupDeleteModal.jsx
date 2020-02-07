@@ -105,16 +105,20 @@ class UserGroupDeleteModal extends React.Component {
     });
 
     return (
-      <select
-        name="actionName"
-        className="form-control"
-        placeholder="select"
-        value={this.state.actionName}
-        onChange={this.handleActionChange}
-      >
-        <option value="" disabled>{t('admin:user_group_management.delete_modal.dropdown_desc')}</option>
-        {optoins}
-      </select>
+      <div className="row">
+        <div className="col">
+          <select
+            name="actionName"
+            className="form-control"
+            placeholder="select"
+            value={this.state.actionName}
+            onChange={this.handleActionChange}
+          >
+            <option value="" disabled>{t('admin:user_group_management.delete_modal.dropdown_desc')}</option>
+            {optoins}
+          </select>
+        </div>
+      </div>
     );
   }
 
@@ -134,15 +138,17 @@ class UserGroupDeleteModal extends React.Component {
       : t('admin:user_group_management.delete_modal.select_group');
 
     return (
-      <select
-        name="transferToUserGroupId"
-        className={`form-control ${this.state.actionName === this.actionForPages.transfer ? '' : 'd-none'}`}
-        value={this.state.transferToUserGroupId}
-        onChange={this.handleGroupChange}
-      >
-        <option value="" disabled>{defaultOptionText}</option>
-        {options}
-      </select>
+      <div className="form-group pr-7">
+        <select
+          name="transferToUserGroupId"
+          className={`form-control ${this.state.actionName === this.actionForPages.transfer ? '' : 'd-none'}`}
+          value={this.state.transferToUserGroupId}
+          onChange={this.handleGroupChange}
+        >
+          <option value="" disabled>{defaultOptionText}</option>
+          {options}
+        </select>
+      </div>
     );
   }
 
@@ -163,7 +169,7 @@ class UserGroupDeleteModal extends React.Component {
     const { t } = this.props;
 
     return (
-      <Modal isOpen={this.props.isShow} toggle={this.props.onHide}>
+      <Modal isOpen={this.props.isShow} size="lg" toggle={this.props.onHide}>
         <ModalHeader toggle={this.props.onHide} className="modal-header bg-danger">
           <i className="icon icon-fire"></i> {t('admin:user_group_management.delete_modal.header')}
         </ModalHeader>
