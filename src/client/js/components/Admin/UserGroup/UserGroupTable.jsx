@@ -77,24 +77,24 @@ class UserGroupTable extends React.Component {
                   {this.props.isAclEnabled
                     ? (
                       <td>
-                        <div className="btn-group admin-group-menu">
-                          <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                            <i className="icon-settings"></i> <span className="caret"></span>
+                        <div className="btn-group admin-group-menu" role="menu">
+                          <button id="groupMenu" type="button" className="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <i className="icon-settings"></i>
                           </button>
-                          <ul className="dropdown-menu" role="menu">
+                          <div className="dropdown-menu" aria-labelledby="groupMenu">
                             <li>
-                              <a href={`/admin/user-group-detail/${group._id}`}>
+                              <a className="dropdown-item" href={`/admin/user-group-detail/${group._id}`}>
                                 <i className="icon-fw icon-note"></i> {t('Edit')}
                               </a>
                             </li>
 
                             <li>
-                              <a role="button" onClick={this.onDelete} data-user-group-id={group._id}>
+                              <a className="dropdown-item" href="#" onClick={this.onDelete} data-user-group-id={group._id}>
                                 <i className="icon-fw icon-fire text-danger"></i> {t('Delete')}
                               </a>
                             </li>
 
-                          </ul>
+                          </div>
                         </div>
                       </td>
                     )
