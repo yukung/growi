@@ -34,7 +34,7 @@ class UserGroupUserTable extends React.Component {
     const { t, userGroupDetailContainer } = this.props;
 
     return (
-      <table className="table table-bordered table-user-list">
+      <table className="table table-bordered table-user-list bt-2">
         <thead>
           <tr>
             <th width="100px">#</th>
@@ -63,17 +63,17 @@ class UserGroupUserTable extends React.Component {
                 <td>{relatedUser.createdAt ? dateFnsFormat(new Date(relatedUser.createdAt), 'yyyy-MM-dd') : ''}</td>
                 <td>{relatedUser.lastLoginAt ? dateFnsFormat(new Date(relatedUser.lastLoginAt), 'yyyy-MM-dd HH:mm:ss') : ''}</td>
                 <td>
-                  <div className="btn-group admin-user-menu">
-                    <button type="button" className="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
-                      <i className="icon-settings"></i> <span className="caret"></span>
+                  <div className="btn-group admin-user-menu" role="group">
+                    <button type="button" className="btn btn-light btn-sm dropdown-toggle" data-toggle="dropdown">
+                      <i className="icon-settings"></i>
                     </button>
-                    <ul className="dropdown-menu" role="menu">
+                    <div className="dropdown-menu" role="menu">
                       <li>
-                        <a onClick={() => { return this.removeUser(relatedUser.username) }}>
+                        <a className="dropdown-item" href="" onClick={() => { return this.removeUser(relatedUser.username) }}>
                           <i className="icon-fw icon-user-unfollow"></i> {t('admin:user_group_management.remove_from_group')}
                         </a>
                       </li>
-                    </ul>
+                    </div>
                   </div>
                 </td>
               </tr>
@@ -83,7 +83,7 @@ class UserGroupUserTable extends React.Component {
           <tr>
             <td></td>
             <td className="text-center">
-              <button className="btn btn-default" type="button" onClick={userGroupDetailContainer.openUserGroupUserModal}>
+              <button className="btn btn-light" type="button" onClick={userGroupDetailContainer.openUserGroupUserModal}>
                 <i className="ti-plus"></i>
               </button>
             </td>

@@ -58,17 +58,21 @@ class UserGroupEditForm extends React.Component {
     const { t, userGroupDetailContainer } = this.props;
 
     return (
-      <form className="form-horizontal" onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <fieldset>
-          <legend>{t('admin:user_group_management.basic_info')}</legend>
-          <div className="form-group">
-            <label htmlFor="name" className="col-sm-2 control-label">{t('Name')}</label>
+          <legend>
+            <div className="border-bottom mt-2">
+              {t('admin:user_group_management.basic_info')}
+            </div>
+          </legend>
+          <div className="form-group row mt-2">
+            <label htmlFor="name" className="col-sm-2 col-form-label">{t('Name')}</label>
             <div className="col-sm-4">
-              <input className="form-control" type="text" name="name" value={this.state.name} onChange={this.changeUserGroupName} />
+              <input type="text" className="form-control" name="name" value={this.state.name} onChange={this.changeUserGroupName} />
             </div>
           </div>
-          <div className="form-group">
-            <label className="col-sm-2 control-label">{t('Created')}</label>
+          <div className="form-group row mt-2">
+            <label className="col-sm-2 col-form-label">{t('Created')}</label>
             <div className="col-sm-4">
               <input
                 type="text"
@@ -78,8 +82,8 @@ class UserGroupEditForm extends React.Component {
               />
             </div>
           </div>
-          <div className="form-group">
-            <div className="col-sm-offset-2 col-sm-10">
+          <div className="form-group row">
+            <div className="offset-sm-2 col-sm-4">
               <button type="submit" className="btn btn-primary" disabled={!this.validateForm()}>{t('Update')}</button>
             </div>
           </div>
