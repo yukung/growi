@@ -105,18 +105,16 @@ class UserGroupDeleteModal extends React.Component {
     });
 
     return (
-      <div className="p-2">
-        <select
-          name="actionName"
-          className="form-control"
-          placeholder="select"
-          value={this.state.actionName}
-          onChange={this.handleActionChange}
-        >
-          <option value="" disabled>{t('admin:user_group_management.delete_modal.dropdown_desc')}</option>
-          {optoins}
-        </select>
-      </div>
+      <select
+        name="actionName"
+        className="form-control"
+        placeholder="select"
+        value={this.state.actionName}
+        onChange={this.handleActionChange}
+      >
+        <option value="" disabled>{t('admin:user_group_management.delete_modal.dropdown_desc')}</option>
+        {optoins}
+      </select>
     );
   }
 
@@ -136,17 +134,15 @@ class UserGroupDeleteModal extends React.Component {
       : t('admin:user_group_management.delete_modal.select_group');
 
     return (
-      <div className="p-2">
-        <select
-          name="transferToUserGroupId"
-          className={`form-control ${this.state.actionName === this.actionForPages.transfer ? '' : 'd-none'}`}
-          value={this.state.transferToUserGroupId}
-          onChange={this.handleGroupChange}
-        >
-          <option value="" disabled>{defaultOptionText}</option>
-          {options}
-        </select>
-      </div>
+      <select
+        name="transferToUserGroupId"
+        className={`form-control ${this.state.actionName === this.actionForPages.transfer ? '' : 'd-none'}`}
+        value={this.state.transferToUserGroupId}
+        onChange={this.handleGroupChange}
+      >
+        <option value="" disabled>{defaultOptionText}</option>
+        {options}
+      </select>
     );
   }
 
@@ -181,17 +177,15 @@ class UserGroupDeleteModal extends React.Component {
         </ModalBody>
         <ModalFooter>
           <form>
-            <div className="d-flex flex-row" onSubmit={this.handleSubmit}>
+            <div className="d-flex justify-content-between" onSubmit={this.handleSubmit}>
               <div className="d-flex">
-                <div className="float-left">
-                  {this.renderPageActionSelector()}
-                  {this.renderGroupSelector()}
-                </div>
-                <button type="submit" value="" className="btn btn-sm btn-danger" disabled={!this.validateForm()}>
-                  <i className="icon icon-fire"></i> {t('Delete')}
-                </button>
+                {this.renderPageActionSelector()}
+                {this.renderGroupSelector()}
               </div>
             </div>
+            <button type="submit" value="" className="btn btn-sm btn-danger" disabled={!this.validateForm()}>
+              <i className="icon icon-fire"></i> {t('Delete')}
+            </button>
           </form>
         </ModalFooter>
       </Modal>
