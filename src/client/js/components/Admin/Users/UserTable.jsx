@@ -88,29 +88,49 @@ class UserTable extends React.Component {
             <tr>
               <th width="100px">#</th>
               <th>
-                {t('status')}
-                <a className="glyphicon glyphicon-triangle-top" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
-                <a className="glyphicon glyphicon-triangle-bottom" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                <div className="d-flex justify-content-center align-items-center">
+                  {t('status')}
+                  <div className="input-sm d-flex flex-column">
+                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                  </div>
+                </div>
               </th>
               <th>
-                <code>username</code>
-                <a className="glyphicon glyphicon-triangle-top" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameAsc')}></a>
-                <a className="glyphicon glyphicon-triangle-bottom" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameDesc')}></a>
+                <div className="d-flex justify-content-center align-items-center">
+                  <code>username</code>
+                  <div className="input-sm d-flex flex-column">
+                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameAsc')}></a>
+                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameDesc')}></a>
+                  </div>
+                </div>
               </th>
               <th>
-                {t('Name')}
-                <a className="glyphicon glyphicon-triangle-top" aria-hidden="true" onClick={() => this.onClickColumnSort('NameAsc')}></a>
-                <a className="glyphicon glyphicon-triangle-bottom" aria-hidden="true" onClick={() => this.onClickColumnSort('NameDesc')}></a>
+                <div className="d-flex justify-content-center align-items-center">
+                  {t('Name')}
+                  <div className="input-sm d-flex flex-column">
+                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('NameAsc')}></a>
+                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('NameDesc')}></a>
+                  </div>
+                </div>
               </th>
               <th>
-                {t('Email')}
-                <a className="glyphicon glyphicon-triangle-top" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailAsc')}></a>
-                <a className="glyphicon glyphicon-triangle-bottom" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailDesc')}></a>
+                <div className="d-flex justify-content-center align-items-center">
+                  {t('Email')}
+                  <div className="input-sm d-flex flex-column">
+                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailAsc')}></a>
+                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailDesc')}></a>
+                  </div>
+                </div>
               </th>
               <th width="100px">
-                {t('Created')}
-                <a className="glyphicon glyphicon-triangle-top" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
-                <a className="glyphicon glyphicon-triangle-bottom" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a>
+                <div className="d-flex justify-content-center align-items-center">
+                  {t('Created')}
+                  <div className="input-sm d-flex flex-column">
+                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
+                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a>
+                  </div>
+                </div>
               </th>
               <th width="150px">{t('Last_Login')}</th>
               <th width="70px"></th>
