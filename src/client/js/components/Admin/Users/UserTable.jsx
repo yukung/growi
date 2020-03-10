@@ -88,56 +88,116 @@ class UserTable extends React.Component {
             <tr>
               <th width="100px">#</th>
               <th>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-around align-items-center">
                   {t('status')}
-                  <div className="input-sm d-flex flex-column">
-                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
-                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                  <div className="d-flex flex-column text-center">
+                    {adminUsersContainer.state.test1 ? (
+                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                    )}
+                    {adminUsersContainer.state.test2 ? (
+                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                    )}
                   </div>
                 </div>
               </th>
+
               <th>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-around align-items-center">
                   <code>username</code>
-                  <div className="input-sm d-flex flex-column">
-                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameAsc')}></a>
-                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameDesc')}></a>
+                  <div className="d-flex flex-column text-center">
+                    {adminUsersContainer.state.test1 ? (
+                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                    )}
+                    {adminUsersContainer.state.test2 ? (
+                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                    )}
+                    {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameAsc')}></a>
+                    <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameDesc')}></a> */}
                   </div>
                 </div>
               </th>
               <th>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-around align-items-center">
                   {t('Name')}
-                  <div className="input-sm d-flex flex-column">
-                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('NameAsc')}></a>
-                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('NameDesc')}></a>
+                  <span className="mr-1"></span>
+                  <div className="d-flex flex-column text-center">
+                    {adminUsersContainer.state.test1 ? (
+                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                    )}
+                    {adminUsersContainer.state.test2 ? (
+                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                    )}
+                    {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('NameAsc')}></a>
+                    <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('NameDesc')}></a> */}
                   </div>
                 </div>
               </th>
               <th>
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-around align-items-center">
                   {t('Email')}
-                  <div className="input-sm d-flex flex-column">
-                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailAsc')}></a>
-                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailDesc')}></a>
+                  <div className="d-flex flex-column text-center">
+                    {adminUsersContainer.state.test1 ? (
+                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                    )}
+                    {adminUsersContainer.state.test2 ? (
+                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                    )}
+                    {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailAsc')}></a>
+                    <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('EmailDesc')}></a> */}
                   </div>
                 </div>
               </th>
               <th width="100px">
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-around align-items-center">
                   {t('Created')}
-                  <div className="input-sm d-flex flex-column">
-                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
-                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a>
+                  <div className="d-flex flex-column text-center">
+                    {adminUsersContainer.state.test1 ? (
+                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                    )}
+                    {adminUsersContainer.state.test2 ? (
+                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                    )}
+                    {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
+                    <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a> */}
                   </div>
                 </div>
               </th>
               <th width="150px">
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-around align-items-center">
                   {t('Last_Login')}
-                  <div className="input-sm d-flex flex-column">
-                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
-                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a>
+                  <div className="d-flex flex-column text-center">
+                    {adminUsersContainer.state.test1 ? (
+                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                    )}
+                    {adminUsersContainer.state.test2 ? (
+                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      ) : (
+                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                    )}
+                    {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
+                    <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a> */}
                   </div>
                 </div>
               </th>
