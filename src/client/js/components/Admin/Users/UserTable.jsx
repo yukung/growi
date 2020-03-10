@@ -132,7 +132,15 @@ class UserTable extends React.Component {
                   </div>
                 </div>
               </th>
-              <th width="150px">{t('Last_Login')}</th>
+              <th width="150px">
+                <div className="d-flex justify-content-center align-items-center">
+                  {t('Last_Login')}
+                  <div className="input-sm d-flex flex-column">
+                    <a className="icon-arrow-up" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedAsc')}></a>
+                    <a className="icon-arrow-down" aria-hidden="true" onClick={() => this.onClickColumnSort('CreatedDesc')}></a>
+                  </div>
+                </div>
+              </th>
               <th width="70px"></th>
             </tr>
           </thead>
