@@ -91,16 +91,31 @@ class UserTable extends React.Component {
                 <div className="d-flex justify-content-around align-items-center">
                   {t('status')}
                   <div className="d-flex flex-column text-center">
-                    {adminUsersContainer.state.test1 ? (
-                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+
+                    {adminUsersContainer.state.selectedColumn === 'status' ? (
+                        // 昇順か降順か
+                      <Fragment>
+                        {adminUsersContainer.state.statusAsc ? (
+                          <Fragment>
+                            <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickSortOff('status')}></a>
+                            <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickSortDescOn('status')}></a>
+                          </Fragment>
+                          ) : (
+                            <Fragment>
+                              <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickSortAscOn('status')}></a>
+                              <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickSortOff('status')}></a>
+                            </Fragment>
+                        )}
+                      </Fragment>
                       ) : (
-                        <a className="fa fa-angle-up" aria-hidden="true"></a>
-                    )}
-                    {adminUsersContainer.state.test2 ? (
-                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
-                      ) : (
-                        <a className="fa fa-angle-down" aria-hidden="true"></a>
-                    )}
+                        <Fragment>
+                          <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickSortAscOn('status')}></a>
+                          <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickSortDescOn('status')}></a>
+                        </Fragment>
+                      )
+                    }
+
+
                   </div>
                 </div>
               </th>
@@ -110,17 +125,16 @@ class UserTable extends React.Component {
                   <code>username</code>
                   <div className="d-flex flex-column text-center">
                     {adminUsersContainer.state.test1 ? (
-                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      <a className="fa fa-chevron-up" aria-hidden="true"></a>
                       ) : (
-                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                        <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
                     )}
                     {adminUsersContainer.state.test2 ? (
-                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      <a className="fa fa-chevron-down" aria-hidden="true"></a>
                       ) : (
-                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                        <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
                     )}
-                    {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameAsc')}></a>
-                    <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('UserNameDesc')}></a> */}
+
                   </div>
                 </div>
               </th>
@@ -130,14 +144,14 @@ class UserTable extends React.Component {
                   <span className="mr-1"></span>
                   <div className="d-flex flex-column text-center">
                     {adminUsersContainer.state.test1 ? (
-                      <a className="fa fa-chevron-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
+                      <a className="fa fa-chevron-up" aria-hidden="true"></a>
                       ) : (
-                        <a className="fa fa-angle-up" aria-hidden="true"></a>
+                        <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusAsc')}></a>
                     )}
                     {adminUsersContainer.state.test2 ? (
-                      <a className="fa fa-chevron-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
+                      <a className="fa fa-chevron-down" aria-hidden="true"></a>
                       ) : (
-                        <a className="fa fa-angle-down" aria-hidden="true"></a>
+                        <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('StatusDesc')}></a>
                     )}
                     {/* <a className="fa fa-angle-up" aria-hidden="true" onClick={() => this.onClickColumnSort('NameAsc')}></a>
                     <a className="fa fa-angle-down" aria-hidden="true" onClick={() => this.onClickColumnSort('NameDesc')}></a> */}
