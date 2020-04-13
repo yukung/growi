@@ -70,7 +70,7 @@ module.exports = function(crowi) {
       'security:passport-google:isEnabled' : false,
       'security:passport-google:clientId': undefined,
       'security:passport-google:clientSecret': undefined,
-      'security:passport-google:isSameUsernameTreatedAsIdenticalUser': false,
+      'security:passport-google:isSameEmailTreatedAsIdenticalUser': false,
 
       'security:passport-github:isEnabled' : false,
       'security:passport-github:clientId': undefined,
