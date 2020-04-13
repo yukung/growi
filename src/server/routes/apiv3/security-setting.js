@@ -79,7 +79,7 @@ const validator = {
   googleOAuth: [
     body('googleClientId').if(value => value != null).isString(),
     body('googleClientSecret').if(value => value != null).isString(),
-    body('isSameUsernameTreatedAsIdenticalUser').if(value => value != null).isBoolean(),
+    body('isSameEmailTreatedAsIdenticalUser').if(value => value != null).isBoolean(),
   ],
   githubOAuth: [
     body('githubClientId').if(value => value != null).isString(),
