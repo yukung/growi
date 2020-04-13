@@ -153,13 +153,13 @@ class GoogleSecurityManagement extends React.Component {
               <div className="col-xs-offset-3 col-xs-6 text-left">
                 <div className="checkbox checkbox-success">
                   <input
-                    id="bindByUserNameGoogle"
+                    id="bindByEmailGoogle"
                     type="checkbox"
-                    checked={adminGoogleSecurityContainer.state.isSameUsernameTreatedAsIdenticalUser || false}
-                    onChange={() => { adminGoogleSecurityContainer.switchIsSameUsernameTreatedAsIdenticalUser() }}
+                    checked={adminGoogleSecurityContainer.state.isSameEmailTreatedAsIdenticalUser || false}
+                    onChange={() => { adminGoogleSecurityContainer.switchIsSameEmailTreatedAsIdenticalUser() }}
                   />
                   <label
-                    htmlFor="bindByUserNameGoogle"
+                    htmlFor="bindByEmailGoogle"
                     dangerouslySetInnerHTML={{ __html: t('security_setting.Treat email matching as identical') }}
                   />
                 </div>

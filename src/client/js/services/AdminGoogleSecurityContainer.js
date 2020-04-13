@@ -23,7 +23,7 @@ export default class AdminGoogleSecurityContainer extends Container {
       callbackUrl: urljoin(pathUtils.removeTrailingSlash(appContainer.config.crowi.url), '/passport/google/callback'),
       googleClientId: '',
       googleClientSecret: '',
-      isSameUsernameTreatedAsIdenticalUser: false,
+      isSameEmailTreatedAsIdenticalUser: false,
     };
 
 
@@ -39,7 +39,7 @@ export default class AdminGoogleSecurityContainer extends Container {
       this.setState({
         googleClientId: googleOAuth.googleClientId,
         googleClientSecret: googleOAuth.googleClientSecret,
-        isSameUsernameTreatedAsIdenticalUser: googleOAuth.isSameUsernameTreatedAsIdenticalUser,
+        isSameEmailTreatedAsIdenticalUser: googleOAuth.isSameEmailTreatedAsIdenticalUser,
       });
     }
     catch (err) {
@@ -71,20 +71,20 @@ export default class AdminGoogleSecurityContainer extends Container {
   }
 
   /**
-   * Switch isSameUsernameTreatedAsIdenticalUser
+   * Switch isSameEmailTreatedAsIdenticalUser
    */
-  switchIsSameUsernameTreatedAsIdenticalUser() {
-    this.setState({ isSameUsernameTreatedAsIdenticalUser: !this.state.isSameUsernameTreatedAsIdenticalUser });
+  switchIsSameEmailTreatedAsIdenticalUser() {
+    this.setState({ isSameEmailTreatedAsIdenticalUser: !this.state.isSameEmailTreatedAsIdenticalUser });
   }
 
   /**
    * Update googleSetting
    */
   async updateGoogleSetting() {
-    const { googleClientId, googleClientSecret, isSameUsernameTreatedAsIdenticalUser } = this.state;
+    const { googleClientId, googleClientSecret, isSameEmailTreatedAsIdenticalUser } = this.state;
 
     let requestParams = {
-      googleClientId, googleClientSecret, isSameUsernameTreatedAsIdenticalUser,
+      googleClientId, googleClientSecret, isSameEmailTreatedAsIdenticalUser,
     };
 
     requestParams = await removeNullPropertyFromObject(requestParams);
@@ -94,7 +94,7 @@ export default class AdminGoogleSecurityContainer extends Container {
     this.setState({
       googleClientId: securitySettingParams.googleClientId,
       googleClientSecret: securitySettingParams.googleClientSecret,
-      isSameUsernameTreatedAsIdenticalUser: securitySettingParams.isSameUsernameTreatedAsIdenticalUser,
+      isSameEmailTreatedAsIdenticalUser: securitySettingParams.isSameEmailTreatedAsIdenticalUser,
     });
     return response;
   }
