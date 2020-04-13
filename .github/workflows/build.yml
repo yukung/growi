@@ -37,7 +37,7 @@ jobs:
 
     - name: Login to docker.io registry
       run: |
-        echo ${{ secrets. DOCKER_REGISTRY_PASSWORD }} | docker login --username wsmoogle --password-stdin
+        echo ${{ secrets. DOCKER_REGISTRY_PASSWORD }} | docker login --username yukung --password-stdin
 
     - name: Build Docker Image
       run: |
@@ -60,7 +60,7 @@ jobs:
       uses: weseek/ghaction-docker-tags-by-semver@v1.0.5
       with:
         source: growi${{ env.SUFFIX }}
-        target: weseek/growi
+        target: yukung/growi
         semver: ${{ env.SEMVER }}
         suffix: ${{ env.SUFFIX }}
         additional-tags: 'latest'
@@ -77,7 +77,7 @@ jobs:
     - name: Update Docker Hub Description
       uses: peter-evans/dockerhub-description@v2.1.0
       env:
-        DOCKERHUB_USERNAME: wsmoogle
+        DOCKERHUB_USERNAME: yukung
         DOCKERHUB_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-        DOCKERHUB_REPOSITORY: weseek/growi
+        DOCKERHUB_REPOSITORY: yukung/growi
         README_FILEPATH: ./docker/README.md
